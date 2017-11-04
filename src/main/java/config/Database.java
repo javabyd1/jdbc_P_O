@@ -8,7 +8,7 @@ public class Database {
 
     private static Connection connection = null;
     private final static String ADRESS   = "jdbc:mysql://localhost";
-    private final static String DATABASE = "pracownicydb?useSSL=false&useJDBCCompliantTimezoneShift=true" +
+    private final static String DATABASE = "j1b?useSSL=false&useJDBCCompliantTimezoneShift=true" +
             "&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private final static String USER     = "root";
     private final static String PASSWORD = "";
