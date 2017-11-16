@@ -7,19 +7,18 @@ import java.sql.SQLException;
 public class Database {
 
     private static Connection connection = null;
-    private final static String ADRESS   = "jdbc:mysql://localhost";
+    private final static String ADRESS = "jdbc:mysql://localhost";
     private final static String DATABASE = "j1b?useSSL=false&useJDBCCompliantTimezoneShift=true" +
             "&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private final static String USER     = "root";
+    private final static String USER = "root";
     private final static String PASSWORD = "";
-    private final static String PORT     = "3306";
-    private final static String DRIVER   = "com.mysql.jdbc.Driver";
+    private final static String PORT = "3306";
+    private final static String DRIVER = "com.mysql.jdbc.Driver";
 
     private static void loadDriver() {
         try {
             Class.forName(DRIVER);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             errorHandler("Failed to load the driver " + DRIVER, e);
         }
     }
@@ -27,15 +26,14 @@ public class Database {
     private static void loadConnection() {
         try {
             connection = DriverManager.getConnection(getFormatedUrl(), USER, PASSWORD);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             errorHandler("Failed to connect to the database " + getFormatedUrl(), e);
         }
     }
 
     private static void errorHandler(String message, Exception e) {
         System.out.println(message);
-        if (e != null){
+        if (e != null) {
             System.out.println(e.getMessage());
         }
     }
@@ -57,13 +55,11 @@ public class Database {
     public static void closeConnection() {
         if (connection == null) {
             errorHandler("No connection found", null);
-        }
-        else {
+        } else {
             try {
                 connection.close();
                 connection = null;
-            }
-            catch (SQLException e) {
+            } catch (SQLException e) {
                 errorHandler("Failed to close the connection", e);
             }
         }
